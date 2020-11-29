@@ -25,7 +25,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import java.util.*;
 
-@Api(value = "wynk",description = "Wynk Music")
+@Api(value = "wynk")
 @RestController
 @RequestMapping("/wynk")
 public class WynkController {
@@ -136,7 +136,8 @@ public class WynkController {
             }
         });
         updatePlaylist(playlists);
-        logger.info("{} "+M3+" {}",publishCO.getSong(),publishCO.getArtist().toString());
+        if(logger.isInfoEnabled())
+            logger.info("{} "+M3+" {}",publishCO.getSong(),publishCO.getArtist().toString());
         return ResponseEntity.ok(new ResponseDTO("ok",String.format(M3)));
     }
 
